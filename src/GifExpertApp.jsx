@@ -8,9 +8,11 @@ export const GifExpertApp = () => {
     
     const apiKey = 'gqUyAwQ0NqQNyzMizfALutMxKdNBuuqf'
     
-    const onAddCategory = ()=>{
-        console.log("evento")
-        setCategories([...categories,"Otra"])
+    const onAddCategory = (newCategory)=>{
+        
+        if(categories.includes(newCategory)) return;
+
+        setCategories([...categories, newCategory])
 
         
     }
@@ -19,7 +21,10 @@ export const GifExpertApp = () => {
         <>
             <h1>GifExpertApp</h1>
             {/*input, pasamos por referencia la funcion*/ }
-            <AddCategory setCategories={setCategories}/>
+            <AddCategory 
+                //setCategories={setCategories}
+                onNewCategory={event=>onAddCategory(event)}
+            />
             
 
             {/* lista*/ }
